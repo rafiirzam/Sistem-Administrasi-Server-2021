@@ -284,3 +284,270 @@ netplan apply
   ![image](https://user-images.githubusercontent.com/83237598/144459187-adbc0d6a-c6b3-403d-8279-9c887f9e5277.png)
 
 ## 4.      
+## vm.local/blog
+
+![2](https://user-images.githubusercontent.com/92965284/144470961-254b14ee-81bb-4cea-a019-a9223aa5b297.png)
+
+  ```
+     nano hosts
+  ```
+ ### buat deploy-wordpress
+![3](https://user-images.githubusercontent.com/92965284/144471270-2928ee9b-742a-4013-8bea-d9d0078f754e.png)
+
+  ```
+     nano deploy-wordpress.yml
+  ```
+### buat direktori 
+![4](https://user-images.githubusercontent.com/92965284/144471837-b25865c4-71e4-4a9d-a68e-4bbb1c2728bb.png)
+
+  ```
+    mkdir -p roles/wordpress/tasks
+    mkdir -p roles/wordpress/handlers
+    mkdir -p roles/wordpress/templates
+  ```
+ ### open main.yml pada tasks
+![5](https://user-images.githubusercontent.com/92965284/144472419-5ce0c433-ab96-40cc-9e18-d9df0f273936.png)
+
+  ```
+    ---
+    - name: delete apt chache
+     become: yes
+     become_user: root
+     become_method: su
+     command: rm -vf /var/lib/apt/lists/*
+
+   - name: install requirement
+     become: yes
+     become_user: root
+     become_method: su
+     apt: name={{ item }} state=latest update_cache=true
+     with_items:
+      - nginx
+      - nginx-extras
+      - curl
+      - wget
+      - php7.4
+      - php7.4-fpm
+      - php7.4-curl
+      - php7.4-xml
+      - php7.4-gd
+      - php7.4-opcache
+      - php7.4-mbstring
+      - php7.4-zip
+      - php7.4-json
+      - php7.4-cli
+      - php7.4-mysqlnd
+      - php7.4-xmlrpc
+      - php7.4-curl
+
+   - name: wget wordpress
+     shell: wget -c http://wordpress.org/latest.tar.gz
+
+   - name: tar latest.tar.gz
+     shell: tar -xvzf latest.tar.gz
+
+   - name: copy folder wordpress
+     shell: cp -R wordpress /var/www/html/blog
+
+   - name: chmod
+     become: yes
+     become_user: root
+     become_method: su
+     command: chmod 775 -R /var/www/html/blog/
+
+   - name: copy .wp-config.conf
+     copy:
+      src=~/ansible/wordpress/wp.conf
+      dest=/var/www/html/blog/wp-config.php
+
+   - name: copy wordpress.conf
+     copy:
+      src=~/ansible/wordpress/wordpress.conf
+      dest=/etc/nginx/sites-available/{{ domain }}
+     vars:
+      servername: '{{ domain }}'
+
+   - name: Symlink wordpress.conf
+     command: ln -sfn /etc/nginx/sites-available/{{ domain }} /etc/nginx/sites-enabled/{{ domain }}
+   
+   - name: restart nginx
+     become: yes
+     become_user: root
+     become_method: su
+     action: service name=nginx state=restarted
+
+   - name: Write {{ domain }} to /etc/hosts
+     lineinfile:
+      dest: /etc/hosts
+      regexp: '.*{{ domain }}$'
+      line: "127.0.0.1 {{ domain }}"
+      state: present
+
+   - name: enable module php mbstring
+     command: phpenmod mbstring
+
+   - name: restart php
+     become: yes
+     become_user: root
+     become_method: su
+     action: service name=php7.4-fpm state=restarted
+
+   - name: restart nginx
+     become: yes
+     become_user: root
+     become_method: su
+     action: service name=nginx state=restarted
+  ```
+  
+ ### open wp.conf pada handlers
+![6](https://user-images.githubusercontent.com/92965284/144473317-175f7890-0168-43c5-9621-297d3b24a901.png)
+
+  ```
+    <?php
+      /**
+       * The base configuration for WordPress
+       *
+       * The wp-config.php creation script uses this file during the installation.
+       * You don't have to use the web site, you can copy this file to "wp-config.php"
+       * and fill in the values.
+       *
+       * This file contains the following configurations:
+       *
+       * * MySQL settings
+       * * Secret keys
+       * * Database table prefix
+       * * ABSPATH
+       *
+       * @link https://wordpress.org/support/article/editing-wp-config-php/
+       *
+       * @package WordPress
+       */
+
+      define( 'WP_HOME', 'http://vm.local/blog' );
+      define( 'WP_SITEURL', 'http://vm.local/blog' );
+
+      // ** MySQL settings - You can get this info from your web host ** //
+      /** The name of the database for WordPress */
+      define( 'DB_NAME', 'blog' );
+
+      /** MySQL database username */
+      define( 'DB_USER', 'admin' );
+
+      /** MySQL database password */
+      define( 'DB_PASSWORD', 'SysAdminSas0102' );
+
+      /** MySQL hostname */
+      define( 'DB_HOST', '10.0.3.200:3306' );
+
+      /** Database charset to use in creating database tables. */
+      define( 'DB_CHARSET', 'utf8' );
+
+      /** The database collate type. Don't change this if in doubt. */
+      define( 'DB_COLLATE', '' );
+
+      /**#@+
+       * Authentication unique keys and salts.
+       *
+       * Change these to different unique phrases! You can generate these using
+       * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+       *
+       * You can change these at any point in time to invalidate all existing cookies.
+       * This will force all users to have to log in again.
+       *
+       * @since 2.6.0
+       */
+      define( 'AUTH_KEY',         'put your unique phrase here' );
+      define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+      define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+      define( 'NONCE_KEY',        'put your unique phrase here' );
+      define( 'AUTH_SALT',        'put your unique phrase here' );
+      define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+      define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+      define( 'NONCE_SALT',       'put your unique phrase here' );
+
+      /**#@-*/
+
+      /**
+       * WordPress database table prefix.
+       *
+       * You can have multiple installations in one database if you give each
+       * a unique prefix. Only numbers, letters, and underscores please!
+       */
+      $table_prefix = 'wp_';
+
+      /**
+       * For developers: WordPress debugging mode.
+       *
+       * Change this to true to enable the display of notices during development.
+       * It is strongly recommended that plugin and theme developers use WP_DEBUG
+       * in their development environments.
+       *
+       * For information on other constants that can be used for debugging,
+       * visit the documentation.
+       *
+       * @link https://wordpress.org/support/article/debugging-in-wordpress/
+       */
+      define( 'WP_DEBUG', false );
+
+      /* Add any custom values between this line and the "stop editing" line. */
+
+
+      /* That's all, stop editing! Happy publishing. */
+
+      /** Absolute path to the WordPress directory. */
+      if ( ! defined( 'ABSPATH' ) ) {
+              define( 'ABSPATH', __DIR__ . '/' );
+      }
+
+      /** Sets up WordPress vars and included files. */
+      require_once ABSPATH . 'wp-settings.php';
+  ```
+  
+  ### open wordpress.conf pada templates
+  ![7](https://user-images.githubusercontent.com/92965284/144474031-dff63b9e-3456-4c59-bd93-5d9876bf0fc3.png)
+  
+  ```
+    server {
+       listen 80;
+       listen [::]:80;
+
+       # Log files for Debugging
+       access_log /var/log/nginx/wordpress-access.log;
+       error_log /var/log/nginx/wordpress-error.log;
+
+       # Webroot Directory for Laravel project
+       root /var/www/html/blog;
+       index index.php index.html index.htm;
+
+       # Your  Name
+       server_name lxc_php7.dev;
+
+       location / {
+               try_files $uri $uri/ /index.php?$query_string;
+       }
+
+       # PHP-FPM Configuration Nginx
+       location ~ \.php$ {
+               try_files $uri =404;
+               fastcgi_split_path_info ^(.+\.php)(/.+)$;
+               fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+               fastcgi_index index.php;
+               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+               include fastcgi_params;
+       }
+    }
+
+  ```
+  ### progress installation ansible
+  
+  ![8](https://user-images.githubusercontent.com/92965284/144474580-b1cf7a48-2798-4c56-99eb-a7cb34a88987.png)
+
+  ### cek browser dengan vm.local/blog
+  ![9](https://user-images.githubusercontent.com/92965284/144474874-94f0331f-097f-461a-b452-f62266985fd6.png)
+  
+  ### login wordpress
+  ![10](https://user-images.githubusercontent.com/92965284/144476639-8f3b052f-6401-4dff-93f2-347169a158f3.png)
+  
+  ### hasil
+  ![11](https://user-images.githubusercontent.com/92965284/144477024-4a64c0bd-fd53-47d7-963d-da3e83f12b1f.png)
+
