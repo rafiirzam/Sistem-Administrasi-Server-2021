@@ -551,3 +551,22 @@ netplan apply
   ### hasil
   ![11](https://user-images.githubusercontent.com/92965284/144477024-4a64c0bd-fd53-47d7-963d-da3e83f12b1f.png)
 
+## Soal Tambahan Praktikum 2
+1. rubah konfigurasi php7.4 yang semula menggunakan socket menjadi menggunakan port ( 127.0.0.1:9001 ) => kalo bisa edit di ansible
+
+### Wordpress
+### Sama seperti laravel, ganti konfigurasi file menjadi wordpress.conf kemudian rubah seperti gambar dibawah
+![image](https://user-images.githubusercontent.com/83237598/144585916-685d1667-d49d-41f7-90c7-6bb4fd1e0eff.png)
+
+### mengganti php sock pada main.yml
+![image](https://user-images.githubusercontent.com/83237598/144586767-e2ae94d6-e0bd-4193-b421-c56823f6f74c.png)
+
+### Landing
+### konfigurasi file landing.conf dan rubah seperti gambar dibawah
+![image](https://user-images.githubusercontent.com/83237598/144586924-a6aa37f9-2cc8-4f6f-a4f0-d2e7d919dea4.png)
+
+### mengganti php sock
+![image](https://user-images.githubusercontent.com/83237598/144586971-118244d8-795c-4f42-9b63-e2fef3da79a5.png)
+
+### kemudian jalankan
+![image](https://user-images.githubusercontent.com/83237598/144587021-d12f8f34-1043-42df-9baa-c5766e658a05.png)
