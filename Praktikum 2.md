@@ -192,7 +192,8 @@ netplan apply
 
   ### Create lxc_landing.dev
 
-       ![22](https://user-images.githubusercontent.com/61863147/144443067-3965ad39-c88f-4250-9035-0f9763871e9c.PNG)
+  ![image](https://user-images.githubusercontent.com/83237598/144527710-15956ccd-c610-4ed9-b1ec-15dd670013be.png)
+
 
 
     ```
