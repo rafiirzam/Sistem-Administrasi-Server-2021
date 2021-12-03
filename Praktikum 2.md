@@ -540,8 +540,7 @@ netplan apply
 
   ```
   ### progress installation ansible
-  
-  ![8](https://user-images.githubusercontent.com/92965284/144474580-b1cf7a48-2798-4c56-99eb-a7cb34a88987.png)
+  ![12](https://user-images.githubusercontent.com/92965284/144529352-dce32931-1535-4d8d-b88e-c1cc35cc8b1d.png)
 
   ### cek browser dengan vm.local/blog
   ![9](https://user-images.githubusercontent.com/92965284/144474874-94f0331f-097f-461a-b452-f62266985fd6.png)
