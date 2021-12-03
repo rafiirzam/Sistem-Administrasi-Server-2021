@@ -40,7 +40,7 @@ netplan apply
 
 ## 2.
 ### Same step as ubuntu landing
-### Destroy lxc_landing ver 18 and install ubuntu landing ver 20 (focal)
+### Destroy ubuntu_php7.4 ver 18 and install ubuntu_php7.4 ver 20 (focal)
 <img width="559" alt="no 2" src="https://user-images.githubusercontent.com/83237598/144446528-993ea3bc-26cb-4fc7-ab54-cd5e9bd817ce.png">
 
 ## 3.
