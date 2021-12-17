@@ -20,7 +20,7 @@ https://github.com/aldonesia/Sistem-Administrasi-Server-2021/blob/master/modul-3
 
 ### go to directory /etc/nginx/sites-enabled/ and config vm.local
 ![image](https://user-images.githubusercontent.com/83237598/146463590-d0e16664-3c4e-4ac3-918c-7d34871ba3fc.png)
-![image](https://user-images.githubusercontent.com/83237598/146463602-e69478b6-cc7c-4a41-b7c9-3e081c46653d.png)
+![17](https://user-images.githubusercontent.com/92965284/146470959-e9d1e36c-6260-4abd-ae3f-88b556eae230.png)
 
 ### add new line with name "dev" at /etc/bind/vm/vm.local
 ![image](https://user-images.githubusercontent.com/83237598/146463716-f109277e-9ea8-4525-83ea-c808bca1b42b.png)
@@ -31,3 +31,11 @@ https://github.com/aldonesia/Sistem-Administrasi-Server-2021/blob/master/modul-3
 ### open wifi properties and add dns server
 ![image](https://user-images.githubusercontent.com/83237598/146463942-c11906d2-84ed-401d-af9e-573afe879571.png)
 
+### result and open in your browser
+  - dev.vm.local
+
+![15](https://user-images.githubusercontent.com/92965284/146470544-8fd6263d-0581-471d-ba43-dc6e489e50c3.png)
+
+  - dev.vm.local/blog
+ 
+![16](https://user-images.githubusercontent.com/92965284/146470553-2916ce07-1ed9-4665-9e48-e3b1774dbe69.png)
