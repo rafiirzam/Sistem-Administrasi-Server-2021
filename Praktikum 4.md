@@ -75,21 +75,22 @@ https://github.com/aldonesia/Sistem-Administrasi-Server-2021/blob/master/modul-4
 ## Analysis Results
 This is the result before & after we applying the load balancer (in case the sample is 50 users)
    - Before, 
-      average time of user access
+      - average time of user access
          - landing   : 2964ms/2.9s
          - blog      : 3482ms/3.4s
          - app       : 25ms/0.025s
-      amount of user access
+      - amount of user access
          - landing   : 9 user/sec
          - blog      : 4 user/sec
          - app       : 5 user/sec
    - After,
-      average time of user access
+      - average time of user access
          - landing   : 2035ms/2.0s
          - blog      : 11ms/0.011s
          - app       : 46ms/0.046s
-      amount of user access
+      - amount of user access
          - landing   : 12 user/sec
          - blog      : 15 user/sec
          - app       : 15 user/sec
+         
 From the data above, we can conclude that after we applying load balancing average time of user accces is more faster and amount of user also increase.
