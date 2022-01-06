@@ -73,3 +73,9 @@ https://github.com/aldonesia/Sistem-Administrasi-Server-2021/blob/master/modul-4
      ![Load(150)](https://user-images.githubusercontent.com/92965284/148389677-186036c1-cd95-4473-bfe3-04aa60a75f26.jpg)
 
 ## Analysis Results
+This is the result before & after we applying the load balancer (in case the sample is 50 users)
+   - Before :
+   ![image](https://user-images.githubusercontent.com/83237598/148393234-f0793a3e-a3e9-45cb-bfd1-29cac5055bcc.png)
+   - After :
+   ![image](https://user-images.githubusercontent.com/83237598/148395802-30bc3731-9f44-47b7-95fc-f950a459813f.png)
+From the data above, we can conclude that after we applying load balancing average time of user accces is more faster and amount of user also increase.
