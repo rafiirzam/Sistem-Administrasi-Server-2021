@@ -93,4 +93,4 @@ This is the result before & after we applying the load balancer (in case the sam
          - blog      : 15 user/sec
          - app       : 15 user/sec
          
-From the data above, we can conclude that after we applying load balancing average time of user accces is more faster and amount of user also increase.
+From the data above, we can conclude that after we applying load balancing load of user divided equally so average time of user accces is more faster and amount of user also increase.
