@@ -9,6 +9,9 @@ https://github.com/aldonesia/Sistem-Administrasi-Server-2021/tree/master/Final%2
 ![image](https://user-images.githubusercontent.com/83237598/151695009-e651b52f-c453-4463-b6d1-bb4108697698.png)
 ![image](https://user-images.githubusercontent.com/83237598/151695025-3e704e6c-351f-47ce-b67a-347808263009.png)
 
+### Create and setting hosts
+![Screenshot (540)](https://user-images.githubusercontent.com/83237598/151730787-5082c6db-9839-4e2e-9da8-91611f790fce.png)
+
 ### List of container and IP address
 ![Screenshot (522)](https://user-images.githubusercontent.com/83237598/151695047-99086f19-442e-4bc7-87b4-1b83ecac42e2.png)
 
@@ -29,6 +32,8 @@ https://github.com/aldonesia/Sistem-Administrasi-Server-2021/tree/master/Final%2
 ```bash
 ansible-playbook -i hosts install-laravel.yml -k
 ```
+![Screenshot (544)](https://user-images.githubusercontent.com/83237598/151730597-dbd7cac0-8484-4cf5-8a41-1024226dbc30.png)
+
 
 ### yii configuration with Ansible
 - Create and config install-laravel.yml & directory
@@ -72,10 +77,28 @@ ansible-playbook -i hosts install-wp.yml -k
 - roles/db/tasks **(left)** & roles/db/templates/my.cnf **(right)**
 ![Screenshot (537)](https://user-images.githubusercontent.com/83237598/151707053-dc6e8682-3efb-4280-94a3-e8d8981a54c5.png)
 
-- 
+- roles/db/handlers
+![Screenshot (538)](https://user-images.githubusercontent.com/83237598/151730238-bc1fe268-4d73-4507-b6b3-d87a9bcaa306.png)
+
+- roles/pma/tasks **(left)** & roles/pma/templates/pma.local **(right)**
+![Screenshot (539)](https://user-images.githubusercontent.com/83237598/151730306-1046d17e-3ef3-4025-b007-d88fc4575c4f.png)
+
+- Run Ansible-Playbook
+```bash
+ansible-playbook -i hosts install-mariadb.yml -k
+```
 
 ### Codeigniter configuration with Ansible
 - Create and configuration install-ci.yml & directory
+![Screenshot (541)](https://user-images.githubusercontent.com/83237598/151730166-2c8aee28-dfa8-4779-80ff-51096e51a30b.png)
+
+- roles/ci/tasks **(left)** & roles/ci/handlers **(right)**
+![Screenshot (542)](https://user-images.githubusercontent.com/83237598/151730526-7a94debe-31cd-456f-802d-297c71a542ea.png)
+
+- roles/ci/templates/ci.conf
+![Screenshot (543)](https://user-images.githubusercontent.com/83237598/151730558-3f9268d1-755f-496f-8db3-35503dfc1a53.png)
+
+
 
 ## Analysis Performance
 1. Average throughputs
