@@ -36,7 +36,7 @@ ansible-playbook -i hosts install-laravel.yml -k
 
 
 ### yii configuration with Ansible
-- Create and config install-laravel.yml & directory
+- Create and config install-yii.yml & directory
 ```bash
 mkdir -p roles/yii
 mkdir -p roles/yii/handlers 
