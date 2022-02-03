@@ -23,7 +23,9 @@ mkdir -p ~/ansible/tugas_akhir
 ```
 
 ### Create and setting hosts
-![Screenshot (540)](https://user-images.githubusercontent.com/83237598/151730787-5082c6db-9839-4e2e-9da8-91611f790fce.png)
+![image](https://user-images.githubusercontent.com/83237598/152382016-d29fcffa-d2c0-4acf-9a76-c0564f0f454f.png)
+![image](https://user-images.githubusercontent.com/83237598/152382030-0fccc732-c36c-4eb9-a053-32acda9407c3.png)
+
 
 ### List of container and IP address
 ![Screenshot (522)](https://user-images.githubusercontent.com/83237598/151695047-99086f19-442e-4bc7-87b4-1b83ecac42e2.png)
@@ -158,9 +160,18 @@ ansible-playbook -i hosts install-mariadb.yml -k
 ansible-playbook -i hosts install-ci.yml -k
 ```
 
-### Setting load balancer
+## Hasil
+### YII
+![Screenshot (245)](https://user-images.githubusercontent.com/83237598/152382984-47847779-9f5a-4fa4-8e60-312384183136.png)
 
+### Codeigniter
+![Screenshot (246)](https://user-images.githubusercontent.com/83237598/152383141-244a253c-b449-4100-b678-5bf8f74fa1dd.png)
 
-### Hasil
+### Wordpress
+![Screenshot (247)](https://user-images.githubusercontent.com/83237598/152383499-d8eda54a-2a77-4ce5-8cba-1dd08053a4b5.png)
 
+### Phpmyadmin
+![Screenshot (248)](https://user-images.githubusercontent.com/83237598/152383874-7fb8631c-20a2-4bbc-b9a1-f904a0a3500d.png)
 
+### Laravel
+![Screenshot (249)](https://user-images.githubusercontent.com/83237598/152384171-8634ed97-9be0-4cb1-8b9e-c261ecd053e3.png)
