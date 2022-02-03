@@ -6,14 +6,69 @@ https://github.com/aldonesia/Sistem-Administrasi-Server-2021/tree/master/Final%2
 ![image](https://user-images.githubusercontent.com/83237598/151696346-4d8c1608-2efa-4b5b-b5ad-7b10003544a8.png)
 
 ### Create LXC in accordance to architecture
+- 6 LXC Ubuntu PHP 7.4
+- 2 LXC Debian PHP 5.6
+- 1 LXC Debian mariaDB server
 ![image](https://user-images.githubusercontent.com/83237598/151695009-e651b52f-c453-4463-b6d1-bb4108697698.png)
 ![image](https://user-images.githubusercontent.com/83237598/151695025-3e704e6c-351f-47ce-b67a-347808263009.png)
+
+### Install Ansible
+```bash
+sudo apt install ansible sshpass
+```
+
+### Create directory
+```bash
+mkdir -p ~/ansible/tugas_akhir
+```
 
 ### Create and setting hosts
 ![Screenshot (540)](https://user-images.githubusercontent.com/83237598/151730787-5082c6db-9839-4e2e-9da8-91611f790fce.png)
 
 ### List of container and IP address
 ![Screenshot (522)](https://user-images.githubusercontent.com/83237598/151695047-99086f19-442e-4bc7-87b4-1b83ecac42e2.png)
+
+- Configuration all lxc with command below
+
+    - Install ssh server
+
+    ```markdown
+    apt install openssh-server
+    ```
+
+    - Adding configuration at /etc/ssh/sshd_config
+
+    ```markdown
+    nano /etc/ssh/sshd_config
+    
+    # setting config
+    PermitRootLogin yes
+    RSAAuthentication yes
+    ```
+
+    - Restart ssh server
+
+    ```markdown
+    service sshd restart
+    ```
+
+    - Setting password for all lxc
+
+    ```markdown
+    passwd (ex: 321)
+    ```
+
+    - Log out from all lxc
+
+    ```markdown
+    exit
+    ```
+
+    - Entering directory
+
+    ```markdown
+    cd ~/ansible/tugas_akhir
+    ```
 
 ### Laravel Configuration with Ansible
 - Create and config install-laravel.yml & directory
@@ -67,7 +122,7 @@ ansible-playbook -i hosts install-yii.yml -k
 
 - Run Ansible-Playbook
 ```bash
-ansible-playbook -i hosts install-wp.yml -k
+ansible-playbook -i hosts install-wordpress.yml -k
 ```
 
 ### mariaDB configuration with Ansible
@@ -98,11 +153,14 @@ ansible-playbook -i hosts install-mariadb.yml -k
 - roles/ci/templates/ci.conf
 ![Screenshot (543)](https://user-images.githubusercontent.com/83237598/151730558-3f9268d1-755f-496f-8db3-35503dfc1a53.png)
 
+- Run Ansible-Playbook
+```bash
+ansible-playbook -i hosts install-ci.yml -k
+```
+
+### Setting load balancer
 
 
-## Analysis Performance
-1. Average throughputs
+### Hasil
 
-2. Average users
 
-3. 
