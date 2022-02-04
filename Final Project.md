@@ -26,7 +26,11 @@ mkdir -p ~/ansible/tugas_akhir
 ![image](https://user-images.githubusercontent.com/83237598/152382016-d29fcffa-d2c0-4acf-9a76-c0564f0f454f.png)
 ![image](https://user-images.githubusercontent.com/83237598/152382030-0fccc732-c36c-4eb9-a053-32acda9407c3.png)
 
-
+### Setting all of containers auto start
+example:
+```markdown
+echo "lxc.start.auto = 1" >> /var/lib/lxc/lxc_db_server/config
+```
 ### List of container and IP address
 ![Screenshot (522)](https://user-images.githubusercontent.com/83237598/151695047-99086f19-442e-4bc7-87b4-1b83ecac42e2.png)
 
