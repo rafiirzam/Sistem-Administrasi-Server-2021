@@ -132,6 +132,8 @@ ansible-playbook -i hosts install-yii.yml -k
 ```bash
 ansible-playbook -i hosts install-wordpress.yml -k
 ```
+![wp](https://user-images.githubusercontent.com/92965284/152492022-6587152c-7736-4eae-b163-650c2ac27565.jpeg)
+
 
 ### mariaDB configuration with Ansible
 - Create and config install-mariadb.yml & directory
@@ -150,6 +152,7 @@ ansible-playbook -i hosts install-wordpress.yml -k
 ```bash
 ansible-playbook -i hosts install-mariadb.yml -k
 ```
+![db](https://user-images.githubusercontent.com/92965284/152492227-9624edbe-815b-499a-a069-c63608bde423.jpeg)
 
 ### Codeigniter configuration with Ansible
 - Create and configuration install-ci.yml & directory
