@@ -114,6 +114,8 @@ mkdir -p roles/yii/templates
 ```bash
 ansible-playbook -i hosts install-yii.yml -k
 ```
+![YII](https://user-images.githubusercontent.com/83237598/152486480-ccef408d-f001-44e4-b173-3fc969a01808.jpeg)
+
 
 ### Wordpress configuration with Ansible
 - Create and config install-wordpress.yml & directory
@@ -163,6 +165,7 @@ ansible-playbook -i hosts install-mariadb.yml -k
 ```bash
 ansible-playbook -i hosts install-ci.yml -k
 ```
+![ci](https://user-images.githubusercontent.com/83237598/152486142-2cf01a9c-2ac2-4c56-91be-29f2ed1ad382.jpeg)
 
 ## Hasil
 ### YII
